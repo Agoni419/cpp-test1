@@ -1,30 +1,24 @@
 #include <iostream>
-#include <string>
-using namespace std;
+
+double calculateBMI(double weight_kg, double height_cm) {
+    if (height_cm <= 0) return 0.0;
+
+    double height_m = height_cm / 100.0;  // Convert height from cm to meters
+    double bmi = weight_kg / (height_m * height_m);  // BMI formula
+
+    return bmi;
+}
 
 int main() {
-    int score[10] = {85, 90, 60, 92, 100, 76, 50, 89, 84, 40};
-    int gradeCount[5] = {0}; // A, B, C, D, F
+    double weight1, weight2, height1, height2;
 
-    for (int i = 0; i < 10; ++i) {
-        if (score[i] >= 90) {
-            gradeCount[0]++;
-        } else if (score[i] >= 80) {
-            gradeCount[1]++;
-        } else if (score[i] >= 70) {
-            gradeCount[2]++;
-        } else if (score[i] >= 60) {
-            gradeCount[3]++;
-        } else {
-            gradeCount[4]++;
-        }
-    }
+    weight1 = 80;   // Weight in kilograms
+    weight2 = 70;
+    height1 = 168;  // Height in centimeters
+    height2 = 188;
 
-    cout << "A等人數: " << gradeCount[0] << endl;
-    cout << "B等人數: " << gradeCount[1] << endl;
-    cout << "C等人數: " << gradeCount[2] << endl;
-    cout << "D等人數: " << gradeCount[3] << endl;
-    cout << "F等人數: " << gradeCount[4] << endl;
+    std::cout << "Your BMI is " << calculateBMI(weight1, height1) << std::endl;
+    std::cout << "Another BMI is " << calculateBMI(weight2, height2) << std::endl;
 
     return 0;
 }
